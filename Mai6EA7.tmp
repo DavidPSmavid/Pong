@@ -1,0 +1,46 @@
+[gd_scene load_steps=10 format=3 uid="uid://b6cetvccyans1"]
+
+[ext_resource type="PackedScene" uid="uid://dwmaiyqm6wa0f" path="res://Player.tscn" id="1_3fme8"]
+[ext_resource type="Script" path="res://main.gd" id="1_75vri"]
+[ext_resource type="Script" path="res://player1.gd" id="2_d7ee0"]
+[ext_resource type="Script" path="res://player2.gd" id="3_jvo2m"]
+[ext_resource type="PackedScene" uid="uid://bqu5wqxgymd2v" path="res://Ball.tscn" id="4_hne1h"]
+[ext_resource type="Script" path="res://ball.gd" id="5_55thq"]
+[ext_resource type="PackedScene" uid="uid://ctry8egw22sg8" path="res://BounceWall.tscn" id="6_c5fnm"]
+[ext_resource type="PackedScene" uid="uid://bqn6pnnegtbs3" path="res://HUD.tscn" id="8_vav0c"]
+[ext_resource type="PackedScene" uid="uid://b0ln0m7rrdm34" path="res://ScoreWall.tscn" id="9_16364"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_75vri")
+
+[node name="Player1" parent="." instance=ExtResource("1_3fme8")]
+position = Vector2(40, 324)
+script = ExtResource("2_d7ee0")
+
+[node name="Player2" parent="." instance=ExtResource("1_3fme8")]
+position = Vector2(1152, 324)
+script = ExtResource("3_jvo2m")
+
+[node name="Ball" parent="." instance=ExtResource("4_hne1h")]
+position = Vector2(576, 324)
+script = ExtResource("5_55thq")
+
+[node name="BounceWallTop" parent="." instance=ExtResource("6_c5fnm")]
+
+[node name="BounceWallBottom" parent="." instance=ExtResource("6_c5fnm")]
+position = Vector2(0, 648)
+
+[node name="HUD" parent="." instance=ExtResource("8_vav0c")]
+visible = false
+
+[node name="Player1ScoreWall" parent="." instance=ExtResource("9_16364")]
+position = Vector2(1152, 0)
+collision_layer = 8
+collision_mask = 8
+
+[node name="Player2ScoreWall" parent="." instance=ExtResource("9_16364")]
+collision_layer = 4
+collision_mask = 4
+
+[connection signal="body_entered" from="Ball" to="Ball" method="_on_body_entered"]
+[connection signal="start_game" from="HUD" to="." method="_on_canvas_layer_start_game"]
