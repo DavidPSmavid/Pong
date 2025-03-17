@@ -1,11 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://b6cetvccyans1"]
+[gd_scene load_steps=11 format=3 uid="uid://b6cetvccyans1"]
 
 [ext_resource type="PackedScene" uid="uid://dwmaiyqm6wa0f" path="res://Player.tscn" id="1_3fme8"]
-[ext_resource type="Script" path="res://main.gd" id="1_75vri"]
-[ext_resource type="Script" path="res://player1.gd" id="2_d7ee0"]
-[ext_resource type="Script" path="res://player2.gd" id="3_jvo2m"]
+[ext_resource type="Script" uid="uid://dgg6mubvdpmjx" path="res://main.gd" id="1_75vri"]
+[ext_resource type="Script" uid="uid://bwry668grgwl7" path="res://player1.gd" id="2_d7ee0"]
+[ext_resource type="Script" uid="uid://25vgfkrxvrj5" path="res://player2.gd" id="3_jvo2m"]
 [ext_resource type="PackedScene" uid="uid://bqu5wqxgymd2v" path="res://Ball.tscn" id="4_hne1h"]
-[ext_resource type="Script" path="res://ball.gd" id="5_55thq"]
+[ext_resource type="Resource" uid="uid://cb5ropxdele1p" path="res://DefaultMovementData.tres" id="4_wkp8b"]
+[ext_resource type="Script" uid="uid://by8211byokbrj" path="res://ball.gd" id="5_55thq"]
 [ext_resource type="PackedScene" uid="uid://ctry8egw22sg8" path="res://BounceWall.tscn" id="6_c5fnm"]
 [ext_resource type="PackedScene" uid="uid://bqn6pnnegtbs3" path="res://HUD.tscn" id="8_vav0c"]
 [ext_resource type="PackedScene" uid="uid://b0ln0m7rrdm34" path="res://ScoreWall.tscn" id="9_16364"]
@@ -16,10 +17,12 @@ script = ExtResource("1_75vri")
 [node name="Player1" parent="." instance=ExtResource("1_3fme8")]
 position = Vector2(40, 324)
 script = ExtResource("2_d7ee0")
+movement_data = ExtResource("4_wkp8b")
 
 [node name="Player2" parent="." instance=ExtResource("1_3fme8")]
 position = Vector2(1152, 324)
 script = ExtResource("3_jvo2m")
+movement_data = ExtResource("4_wkp8b")
 
 [node name="Ball" parent="." instance=ExtResource("4_hne1h")]
 position = Vector2(576, 324)

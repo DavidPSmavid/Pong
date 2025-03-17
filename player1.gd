@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed = 400
+@export var movement_data : PlayerMovementData
 var screen_size
 
 
@@ -18,7 +18,7 @@ func _process(delta: float) -> void:
 		velocity.y += 1
 
 	if velocity.length() > 0:
-		velocity = velocity.normalized() * speed
+		velocity = velocity.normalized() * movement_data.speed
 
 	position += velocity * delta
 	position = position.clamp(Vector2.ZERO, screen_size)
